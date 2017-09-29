@@ -9,11 +9,13 @@ class Song:
         self.is_required = is_required
 
     def __str__(self):
-        set_learned = "(learned)" if self.is_required else ""
-        return '"{}" by {} ({}){}'.format(self.title, self.artist, self.year, set_learned )
+        check_learned = "" if self.is_required else "(learned)"
+        return '"{}" by {} ({}){}'.format(self.title, self.artist, self.year, check_learned)
 
     def mark_required(self):
-        pass
+        self.is_required = True
+        return self.is_required
 
     def mark_learned(self):
-        pass
+        self.is_required = False
+        return self.is_required
