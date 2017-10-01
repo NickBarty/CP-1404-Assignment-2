@@ -35,8 +35,11 @@ class SongList:
                 song_to_load = Song(row[0], row[1], int(row[2]), True if row[3] == "y" else False)
                 self.add_song(song_to_load)
 
-    def save_songs(self):
-        pass
+    def save_songs(self, file_name):
+        with open(file_name, "w") as open_file:
+            write_to_file = csv.writer(open_file, delimiter=",", lineterminator="\n")
+            for song in self.songs:
+                write_to_file.writerow([song.title, song.artist, song.year, "y" if song.is_required else "n"])
 
     def sort(self):
         pass

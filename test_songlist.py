@@ -41,5 +41,8 @@ print()
 print("Expected # of learned songs:  {} | Got: {}".format(2, song_list.get_number_of_learned_songs()))
 print("Expected # of required songs: {} | Got: {}".format(5, song_list.get_number_of_required_songs()))
 
-
 # test saving songs (check CSV file manually to see results)
+print()
+print("----Testing save_songs on out_songs.csv----")
+song_list.save_songs("songs.csv")
+print("Check CSV file for results")
