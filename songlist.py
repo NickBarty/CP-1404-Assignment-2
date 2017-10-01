@@ -1,6 +1,7 @@
 # create your SongList class in this file
 import csv
 from song import Song
+from operator import attrgetter
 
 
 class SongList:
@@ -41,5 +42,5 @@ class SongList:
             for song in self.songs:
                 write_to_file.writerow([song.title, song.artist, song.year, "y" if song.is_required else "n"])
 
-    def sort(self):
-        pass
+    def sort(self, attribute):
+        self.songs.sort(key=attrgetter(attribute, "title"))

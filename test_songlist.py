@@ -1,5 +1,5 @@
 """
-(incomplete) Tests for SongList class
+Tests for each method of the SongList class showing how each one works
 """
 from songlist import SongList
 from song import Song
@@ -16,8 +16,11 @@ song_list.load_songs('songs.csv')
 print("Loaded SongList: \n{}".format(song_list))
 assert len(song_list.songs) > 0  # assuming CSV file is not empty
 
-# TODO: add tests below to show the various required methods work as expected
 # test sorting songs
+print("----Testing sort function----")
+print("Unsorted SongList is:\n{}".format(song_list))
+song_list.sort("is_required")
+print("Sorted SongList by learned or not then title is:\n{}".format(song_list))
 
 # test adding a new Song
 print("----Testing add_song----")
