@@ -21,10 +21,10 @@ class SongList:
         self.songs += [song]
 
     def get_number_of_required_songs(self):
-        pass
+        return len([song for song in self.songs if song.is_required])
 
     def get_number_of_learned_songs(self):
-        pass
+        return len([song for song in self.songs if not song.is_required])
 
     def load_songs(self, file_name):
         with open(file_name, "r") as open_file:
