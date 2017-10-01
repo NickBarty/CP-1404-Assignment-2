@@ -14,8 +14,10 @@ class SongList:
             song_to_print += "\n"
         return song_to_print
 
-    def get_song_by_title(self):
-        pass
+    def get_song_by_title(self, title):
+        for song in self.songs:
+            if song.title == title:
+                return song
 
     def add_song(self, song):
         self.songs += [song]
