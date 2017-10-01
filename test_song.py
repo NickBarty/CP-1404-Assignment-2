@@ -1,4 +1,6 @@
-"""(Incomplete) Tests for Song class."""
+"""
+Tests each method of the Song class and shows how each of the attributes work at an individual level
+"""
 from song import Song
 
 # test empty song (defaults)
