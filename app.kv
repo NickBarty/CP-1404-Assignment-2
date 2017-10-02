@@ -1,1 +1,65 @@
 # create your Kivy layout in the kv language here
+BoxLayout:
+    orientation: 'horizontal'
+    BoxLayout:
+#   Left hand side of GUI
+        orientation: 'vertical'
+        size_hint_x: 0.3
+        BoxLayout:
+#       Spinner widget to select how to sort songs
+            orientation: 'vertical'
+            size_hint_y: 0.3
+            Label:
+                text: 'Sort by:'
+            Spinner:
+                text: 'Placeholder'
+        BoxLayout:
+#       Add song section
+            orientation: 'vertical'
+            Label:
+                text: 'Add New Song...'
+            Label:
+                text: 'Title:'
+            TextInput:
+                id: input_title
+                font_size: 40
+            Label:
+                text: 'Artist:'
+            TextInput:
+                id: input_artist
+                font_size: 40
+            Label:
+                text: 'Year:'
+            TextInput:
+                id: input_year
+                font_size: 40
+        BoxLayout:
+#       Buttons to add the song or clear the fields
+            orientation: 'vertical'
+            size_hint_y: 0.25
+            Button:
+                text: 'Add Song'
+            Button:
+                text: 'Clear'
+    BoxLayout:
+#   Right hand side of GUI
+        orientation: 'vertical'
+        BoxLayout:
+#       To learn / Learned status
+            orientation: 'vertical'
+            size_hint_y: 0.1
+            Label:
+                text: 'To Learn / Learned'
+                size_hint_y: 0.1
+        BoxLayout:
+#       Song list area
+            orientation: 'vertical'
+            Button:
+                text: 'Songs list'
+        BoxLayout:
+#       Error messages / updates
+            orientation: 'vertical'
+            size_hint_y: 0.1
+            Label:
+                text: 'messages / status'
+                size_hint_y: 0.1
