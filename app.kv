@@ -49,7 +49,7 @@ BoxLayout:
             orientation: 'vertical'
             size_hint_y: 0.1
             Label:
-                id: output_song_learned_status
+                id: output_song_learned_status_label
                 size_hint_y: 0.1
         BoxLayout:
 #       Song list area
@@ -58,9 +58,10 @@ BoxLayout:
             cols: 1
             orientation: 'vertical'
         BoxLayout:
-#       Error messages / updates
+#       Status messages
             orientation: 'vertical'
             size_hint_y: 0.1
             Label:
-                text: 'messages / status'
+                id: status_text
+                text: ''
                 size_hint_y: 0.1

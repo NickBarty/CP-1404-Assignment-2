@@ -13,6 +13,7 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.button import Button
 from songlist import SongList
+from song import Song
 
 # Create your main program in this file, using the SongsToLearnApp class
 
@@ -23,6 +24,7 @@ GREEN = (0, 1, 0, 1)
 class SongsToLearnApp(App):
     def __init__(self, **kwargs):
         self.songs = SongList()
+        self.song = Song()
         self.songs.load_songs('songs.csv')
         super(SongsToLearnApp, self).__init__(**kwargs)
 
@@ -33,6 +35,7 @@ class SongsToLearnApp(App):
         return self.root
 
     def create_widgets(self):
+        self.root.ids.songsBox.clear_widgets()
         for song in self.songs.songs:
             temp_button = Button(text=str(song))
             if song.is_required is True:
@@ -40,6 +43,20 @@ class SongsToLearnApp(App):
             else:
                 temp_button.background_color = GREEN
             self.root.ids.songsBox.add_widget(temp_button)
+            temp_button.bind(on_release=self.change_learned_status)
+            self.root.ids.output_song_learned_status_label.text = "To learn: {}. Learned: {}".format(
+                self.songs.get_number_of_required_songs(), self.songs.get_number_of_learned_songs())
+
+    def change_learned_status(self, instance):
+        self.song = self.songs.get_song_by_title(instance.text)
+        if self.song.is_required is True:
+            self.song.mark_learned()
+            status_text = "You have learned {}".format(str(self.song.title))
+        else:
+            self.song.mark_required()
+            status_text = "You need to learn {}".format(str(self.song.title))
+        self.root.ids.status_text.text = str(status_text)
+        SongsToLearnApp.create_widgets(self)
 
 
 SongsToLearnApp().run()

@@ -20,10 +20,10 @@ class SongList:
             songs_to_print += "{} \n".format(song)
         return songs_to_print
 
-    def get_song_by_title(self, title):
+    def get_song_by_title(self, song_to_try):
         """get all attributes of a song by entering in just the title"""
         for song in self.songs:
-            if song.title == title:
+            if song.title in song_to_try:
                 return song
 
     def add_song(self, song):
