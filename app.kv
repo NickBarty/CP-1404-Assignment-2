@@ -22,17 +22,17 @@ BoxLayout:
                 text: 'Title:'
             TextInput:
                 id: input_title
-                font_size: 40
+                font_size: 20
             Label:
                 text: 'Artist:'
             TextInput:
                 id: input_artist
-                font_size: 40
+                font_size: 20
             Label:
                 text: 'Year:'
             TextInput:
                 id: input_year
-                font_size: 40
+                font_size: 20
         BoxLayout:
 #       Buttons to add the song or clear the fields
             orientation: 'vertical'
@@ -49,13 +49,14 @@ BoxLayout:
             orientation: 'vertical'
             size_hint_y: 0.1
             Label:
-                text: 'To Learn / Learned'
+                id: output_song_learned_status
                 size_hint_y: 0.1
         BoxLayout:
 #       Song list area
             orientation: 'vertical'
-            Button:
-                text: 'Songs list'
+            id: songsBox
+            cols: 1
+            orientation: 'vertical'
         BoxLayout:
 #       Error messages / updates
             orientation: 'vertical'

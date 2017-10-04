@@ -17,8 +17,7 @@ class SongList:
         """specifies how to print the song list"""
         songs_to_print = ""
         for song in self.songs:
-            songs_to_print += str(song)
-            songs_to_print += "\n"
+            songs_to_print += "{} \n".format(song)
         return songs_to_print
 
     def get_song_by_title(self, title):

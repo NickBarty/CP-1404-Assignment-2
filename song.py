@@ -15,7 +15,7 @@ class Song:
     def __str__(self):
         """specifies how songs will be printed and if they are learned or not"""
         check_learned = "" if self.is_required else "(learned)"
-        return '"{}" by {} ({}){}'.format(self.title, self.artist, self.year, check_learned)
+        return '"{}" by {} ({}) {}'.format(self.title, self.artist, self.year, check_learned)
 
     def mark_required(self):
         """marks the song as required (not learned)"""
