@@ -26,9 +26,9 @@ class SongList:
             if song.title in song_to_try:
                 return song
 
-    def add_song(self, song):
+    def add_song(self, title, artist, year, required):
         """add a song to the songs list"""
-        self.songs += [song]
+        self.songs.append(Song(title, artist, year, required))
 
     def get_number_of_required_songs(self):
         """gets number of songs that are required (haven't been learnt) and returns that number"""
@@ -44,7 +44,7 @@ class SongList:
             read_file = csv.reader(open_file, delimiter=',')
             for row in read_file:
                 song_to_load = Song(row[0], row[1], int(row[2]), True if row[3] == "y" else False)
-                self.add_song(song_to_load)
+                self.songs.append(song_to_load)
 
     def save_songs(self, file_name):
         """writes CSV file line by line using the attributes from each song in the list"""

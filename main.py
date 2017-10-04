@@ -58,5 +58,22 @@ class SongsToLearnApp(App):
         self.root.ids.status_text.text = str(status_text)
         SongsToLearnApp.create_widgets(self)
 
+    def add_song(self):
+        if self.root.ids.input_title.text == "" or self.root.ids.input_artist.text == "" \
+                or self.root.ids.input_year.text == "":
+            self.root.ids.status_text.text = "All fields must be completed"
+            return
+        try:
+            if int(self.root.ids.input_year.text) < 0:
+                self.root.ids.status_text.text = "Year must be >= 0"
+                return
+        except ValueError:
+            self.root.ids.status_text.text = "Please enter a valid number"
+            return
+        self.songs.songs.append(Song(self.root.ids.input_title.text, self.root.ids.input_artist.text,
+                                     int(self.root.ids.input_year.text), True))
+        SongsToLearnApp.clear_inputs(self)
+        SongsToLearnApp.create_widgets(self)
+
 
 SongsToLearnApp().run()

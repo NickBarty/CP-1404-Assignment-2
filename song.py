@@ -5,12 +5,12 @@ class Song:
     """Song class initialises the attributes every song will have, how they will be printed and the ability to mark a
     song as required or learned"""
 
-    def __init__(self, title="", artist="", year=0, is_required=True):
+    def __init__(self, title="", artist="", year=0, required=True):
         """initialises the attributes songs will have with default values"""
         self.title = title
         self.artist = artist
         self.year = year
-        self.is_required = is_required
+        self.is_required = required
 
     def __str__(self):
         """specifies how songs will be printed and if they are learned or not"""

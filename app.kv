@@ -39,8 +39,10 @@ BoxLayout:
             size_hint_y: 0.25
             Button:
                 text: 'Add Song'
+                on_release: app.add_song()
             Button:
                 text: 'Clear'
+                on_release: app.clear_inputs()
     BoxLayout:
 #   Right hand side of GUI
         orientation: 'vertical'
