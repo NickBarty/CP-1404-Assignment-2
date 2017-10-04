@@ -22,17 +22,29 @@ BoxLayout:
                 text: 'Title:'
             TextInput:
                 id: input_title
-                font_size: 20
+                font_size: 25
+                write_tab: False
+                multiline: False
+                on_text_validate: app.add_song()
+                background_color: (1,1,1,1) if self.focus else (1,1,1,0.7)
             Label:
                 text: 'Artist:'
             TextInput:
                 id: input_artist
-                font_size: 20
+                font_size: 25
+                write_tab: False
+                multiline: False
+                on_text_validate: app.add_song()
+                background_color: (1,1,1,1) if self.focus else (1,1,1,0.7)
             Label:
                 text: 'Year:'
             TextInput:
                 id: input_year
-                font_size: 20
+                font_size: 25
+                write_tab: False
+                multiline: False
+                on_text_validate: app.add_song()
+                background_color: (1,1,1,1) if self.focus else (1,1,1,0.7)
         BoxLayout:
 #       Buttons to add the song or clear the fields
             orientation: 'vertical'
