@@ -34,6 +34,11 @@ class SongsToLearnApp(App):
         self.create_widgets()
         return self.root
 
+    def clear_inputs(self):
+        self.root.ids.input_title.text = ""
+        self.root.ids.input_artist.text = ""
+        self.root.ids.input_year.text = ""
+
     def create_widgets(self):
         self.root.ids.songsBox.clear_widgets()
         for song in self.songs.songs:
