@@ -19,13 +19,13 @@ assert len(song_list.songs) > 0  # assuming CSV file is not empty
 # test sorting songs
 print("----Testing sort----")
 print("Unsorted SongList is:\n{}".format(song_list))
-song_list.sort("is_required")
+song_list.sort("required")
 print("Sorted SongList by learned or not then title is:\n{}".format(song_list))
 
 # test adding a new Song
 print("----Testing add_song----")
 print("Adding {} to SongList".format(song))
-song_list.add_song(song)
+song_list.add_song(song.title, song.artist, song.year, song.required)
 print("Updated SongList is: \n\n{}".format(song_list))
 
 # test get_song()
@@ -47,5 +47,5 @@ print("Expected # of required songs: {} | Got: {}".format(5, song_list.get_numbe
 # test saving songs (check CSV file manually to see results)
 print()
 print("----Testing save_songs on out_songs.csv----")
-song_list.save_songs("songs.csv")
+# song_list.save_songs("songs.csv")
 print("Check CSV file for results")

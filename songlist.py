@@ -32,11 +32,11 @@ class SongList:
 
     def get_number_of_required_songs(self):
         """gets number of songs that are required (haven't been learnt) and returns that number"""
-        return len([song for song in self.songs if song.is_required])
+        return len([song for song in self.songs if song.required])
 
     def get_number_of_learned_songs(self):
         """gets number of songs that have been learnt and returns that number"""
-        return len([song for song in self.songs if not song.is_required])
+        return len([song for song in self.songs if not song.required])
 
     def load_songs(self, file_name):
         """reads CSV file line by line, adding each line (song) to the song list"""
@@ -51,7 +51,7 @@ class SongList:
         with open(file_name, "w") as open_file:
             write_to_file = csv.writer(open_file, delimiter=",", lineterminator="\n")
             for song in self.songs:
-                write_to_file.writerow([song.title, song.artist, song.year, "y" if song.is_required else "n"])
+                write_to_file.writerow([song.title, song.artist, song.year, "y" if song.required else "n"])
 
     def sort(self, attribute):
         """sorts the song list by the specified attribute (title, artist, year, is_required) and then by the title"""

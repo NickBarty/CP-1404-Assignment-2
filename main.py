@@ -43,7 +43,7 @@ class SongsToLearnApp(App):
         self.root.ids.songsBox.clear_widgets()
         for song in self.songs.songs:
             temp_button = Button(text=str(song))
-            if song.is_required is True:
+            if song.required is True:
                 temp_button.background_color = RED
             else:
                 temp_button.background_color = GREEN
@@ -54,7 +54,7 @@ class SongsToLearnApp(App):
 
     def change_learned_status(self, instance):
         self.song = self.songs.get_song_by_title(instance.text)
-        if self.song.is_required is True:
+        if self.song.required is True:
             self.song.mark_learned()
             status_text = "You have learned {}".format(str(self.song.title))
         else:

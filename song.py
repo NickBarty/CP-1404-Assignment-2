@@ -10,19 +10,19 @@ class Song:
         self.title = title
         self.artist = artist
         self.year = year
-        self.is_required = required
+        self.required = required
 
     def __str__(self):
         """specifies how songs will be printed and if they are learned or not"""
-        check_learned = "" if self.is_required else "(learned)"
+        check_learned = "" if self.required else "(learned)"
         return '"{}" by {} ({}) {}'.format(self.title, self.artist, self.year, check_learned)
 
     def mark_required(self):
         """marks the song as required (not learned)"""
-        self.is_required = True
-        return self.is_required
+        self.required = True
+        return self.required
 
     def mark_learned(self):
         """marks the song as learned"""
-        self.is_required = False
-        return self.is_required
+        self.required = False
+        return self.required
