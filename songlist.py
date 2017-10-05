@@ -26,9 +26,8 @@ class SongList:
             if song.title in song_to_try:
                 return song
 
-    def add_song(self, title, artist, year, required):
-        """add a song to the songs list"""
-        self.songs.append(Song(title, artist, year, required))
+    def add_song(self, song):
+        self.songs += [song]
 
     def get_number_of_required_songs(self):
         """gets number of songs that are required (haven't been learnt) and returns that number"""
@@ -55,4 +54,4 @@ class SongList:
 
     def sort(self, attribute):
         """sorts the song list by the specified attribute (title, artist, year, is_required) and then by the title"""
-        self.songs.sort(key=attrgetter(attribute, "title"))
+        self.songs.sort(key=attrgetter(attribute.lower(), "title"))

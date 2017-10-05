@@ -12,7 +12,10 @@ BoxLayout:
             Label:
                 text: 'Sort by:'
             Spinner:
-                text: 'Placeholder'
+                id: sort_options
+                text: app.current_sort_option
+                values: app.sort_options
+                on_text: app.sort_songs(self.text)
         BoxLayout:
 #       Add song section
             orientation: 'vertical'
@@ -22,7 +25,7 @@ BoxLayout:
                 text: 'Title:'
             TextInput:
                 id: input_title
-                font_size: 25
+                font_size: 18
                 write_tab: False
                 multiline: False
                 on_text_validate: app.add_song()
@@ -31,7 +34,7 @@ BoxLayout:
                 text: 'Artist:'
             TextInput:
                 id: input_artist
-                font_size: 25
+                font_size: 18
                 write_tab: False
                 multiline: False
                 on_text_validate: app.add_song()
@@ -40,7 +43,7 @@ BoxLayout:
                 text: 'Year:'
             TextInput:
                 id: input_year
-                font_size: 25
+                font_size: 18
                 write_tab: False
                 multiline: False
                 on_text_validate: app.add_song()

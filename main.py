@@ -12,6 +12,8 @@ GitHub URL: https://github.com/CP1404-2017-2/a2-nbart1
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.button import Button
+from kivy.properties import StringProperty
+from kivy.properties import ListProperty
 from songlist import SongList
 from song import Song
 
@@ -19,20 +21,33 @@ from song import Song
 
 RED = (1, 0, 0, 1)
 GREEN = (0, 1, 0, 1)
+SORT_OPTIONS = ["Title", "Artist", "Year", "Required"]
+FILE_NAME = 'songs.csv'
 
 
 class SongsToLearnApp(App):
+    current_sort_option = StringProperty()
+    sort_options = ListProperty()
+
     def __init__(self, **kwargs):
         self.songs = SongList()
         self.song = Song()
-        self.songs.load_songs('songs.csv')
+        self.songs.load_songs(FILE_NAME)
         super(SongsToLearnApp, self).__init__(**kwargs)
 
     def build(self):
         self.title = "Songs To Learn 2.0"
         self.root = Builder.load_file('app.kv')
+        self.sort_options = SORT_OPTIONS
+        self.current_sort_option = self.sort_options[0]
         self.create_widgets()
         return self.root
+
+    def sort_songs(self, current_sort_option):
+        # self.current_sort_option = current_sort_option
+        self.songs.sort(current_sort_option)
+        self.root.ids.songsBox.clear_widgets()
+        SongsToLearnApp.create_widgets(self)
 
     def clear_inputs(self):
         self.root.ids.input_title.text = ""
@@ -61,7 +76,7 @@ class SongsToLearnApp(App):
             self.song.mark_required()
             status_text = "You need to learn {}".format(str(self.song.title))
         self.root.ids.status_text.text = str(status_text)
-        SongsToLearnApp.create_widgets(self)
+        self.sort_songs(self.root.ids.sort_options.text)
 
     def add_song(self):
         if self.root.ids.input_title.text == "" or self.root.ids.input_artist.text == "" \
@@ -75,10 +90,14 @@ class SongsToLearnApp(App):
         except ValueError:
             self.root.ids.status_text.text = "Please enter a valid number"
             return
-        self.songs.songs.append(Song(self.root.ids.input_title.text, self.root.ids.input_artist.text,
-                                     int(self.root.ids.input_year.text), True))
+        song_to_add = Song(self.root.ids.input_title.text, self.root.ids.input_artist.text,
+                           int(self.root.ids.input_year.text))
+        self.songs.add_song(song_to_add)
         SongsToLearnApp.clear_inputs(self)
-        SongsToLearnApp.create_widgets(self)
+        self.sort_songs(self.root.ids.sort_options.text)
+
+    def on_stop(self):
+        self.songs.save_songs(FILE_NAME)
 
 
 SongsToLearnApp().run()

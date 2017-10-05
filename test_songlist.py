@@ -25,7 +25,7 @@ print("Sorted SongList by learned or not then title is:\n{}".format(song_list))
 # test adding a new Song
 print("----Testing add_song----")
 print("Adding {} to SongList".format(song))
-song_list.add_song(song.title, song.artist, song.year, song.required)
+song_list.add_song(song)
 print("Updated SongList is: \n\n{}".format(song_list))
 
 # test get_song()
