@@ -17,8 +17,6 @@ from kivy.properties import ListProperty
 from songlist import SongList
 from song import Song
 
-# Create your main program in this file, using the SongsToLearnApp class
-
 RED = (1, 0, 0, 1)
 GREEN = (0, 1, 0, 1)
 SORT_OPTIONS = ["Title", "Artist", "Year", "Required"]
@@ -44,24 +42,18 @@ class SongsToLearnApp(App):
         return self.root
 
     def sort_songs(self, current_sort_option):
-        # self.current_sort_option = current_sort_option
         self.songs.sort(current_sort_option)
         self.root.ids.songsBox.clear_widgets()
         SongsToLearnApp.create_widgets(self)
 
     def clear_inputs(self):
-        self.root.ids.input_title.text = ""
-        self.root.ids.input_artist.text = ""
-        self.root.ids.input_year.text = ""
+        self.root.ids.input_title.text, self.root.ids.input_artist.text, self.root.ids.input_year.text = ("", "", "")
 
     def create_widgets(self):
         self.root.ids.songsBox.clear_widgets()
         for song in self.songs.songs:
             temp_button = Button(text=str(song))
-            if song.required is True:
-                temp_button.background_color = RED
-            else:
-                temp_button.background_color = GREEN
+            temp_button.background_color = RED if song.required else GREEN
             self.root.ids.songsBox.add_widget(temp_button)
             temp_button.bind(on_release=self.change_learned_status)
             self.root.ids.output_song_learned_status_label.text = "To learn: {}. Learned: {}".format(
@@ -79,8 +71,7 @@ class SongsToLearnApp(App):
         self.sort_songs(self.root.ids.sort_options.text)
 
     def add_song(self):
-        if self.root.ids.input_title.text == "" or self.root.ids.input_artist.text == "" \
-                or self.root.ids.input_year.text == "":
+        if "" in (self.root.ids.input_title.text, self.root.ids.input_artist.text, self.root.ids.input_year.text):
             self.root.ids.status_text.text = "All fields must be completed"
             return
         try:

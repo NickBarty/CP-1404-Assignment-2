@@ -47,5 +47,5 @@ print("Expected # of required songs: {} | Got: {}".format(5, song_list.get_numbe
 # test saving songs (check CSV file manually to see results)
 print()
 print("----Testing save_songs on out_songs.csv----")
-# song_list.save_songs("songs.csv")
+song_list.save_songs("songs.csv")
 print("Check CSV file for results")

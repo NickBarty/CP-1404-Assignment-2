@@ -1,6 +1,3 @@
-# create your Song class in this file
-
-
 class Song:
     """Song class initialises the attributes every song will have, how they will be printed and the ability to mark a
     song as required or learned"""

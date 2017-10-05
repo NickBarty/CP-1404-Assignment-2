@@ -1,4 +1,3 @@
-# create your SongList class in this file
 import csv
 from song import Song
 from operator import attrgetter
