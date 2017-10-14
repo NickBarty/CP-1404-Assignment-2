@@ -1,6 +1,5 @@
-# CP1404/5632 Assignment: Songs To Learn by YOURNAME
+# CP1404/5632 Assignment: Songs To Learn 2.0 by Nicholas Barty
 
-_Edit this README, replacing this line and above with your own assignment details._  
 _At the end of the project, complete the project reflection below by answering the questions (replace the ... parts)._
 _Note that to get full marks for this, your reflection should match the "exemplary" description from the rubric:_
 
@@ -8,23 +7,29 @@ _Note that to get full marks for this, your reflection should match the "exempla
 
 
 ## 1. How long did the entire project (assignment 2) take you?
-...  
-Note: You may like to use the WakaTime plugin, which tracks exactly how long you spend in code. See http://wakatime.com (but note that the free version only has a 7-day history)
+From the WakaTime plugin, the entire project in pycharm took me 18 hours on my desktop pc, i spent a further 4-6 hours working on the assignment from my laptop, and a further 1-2 hours writing down an outline for the project for myself to follow as well as how the GUI would be laid out. Overall the entire project took me 23-25 hours to complete from start to finish.
 
 ## 2. What are you most satisfied with?
-...
+I am most satisfied with my Song class, i have had to make the least amount of change over the entire project to the Song class when compared to the other classes/code. The part of my Song class i am most happy with is the ternary operator in the str method, originally i had an if-else statement to check if the song was learned or not but after reviewing some extension work i realised that i could make it into a ternary operator. The Song class i personally feel is also the easiest bit of code to read in the assignment which is also why i am most satisfied with it.
 
 ## 3. What are you least satisfied with?
-...
+The section of the project i am least satisfied with is file loading & saving. I'm least satisfied with this section of my code as i feel it isn't very readable and could be done in a much more efficient/better way. File loading/saving has been my biggest learning issue with python and most of the time has felt like i have just "made it work" instead of "making it work correctly and efficiently". I expanded on what i did for the first assignment for my file loading/saving in this assignment, in my first assignment i loaded everything as a string which was incorrect, this time i feel like i have loaded everything in the correct way but still feel unsatisfied with my way of loading/saving the files. This is majorly due to me deciding to use the CSV module to load/save files which was not covered in detail in classes but was covered in the prescribed text.
 
 ## 4. What worked well in your development process?
-...
+The Kivy GUI development process worked well in the project. Having drawn out the GUI layout made the development process of the Kivy GUI significantly easier knowing roughly what i would need to do to replicate the example layout. After looking at a few practical demos i was able to put what i had drawn on paper and demo code together to make the general layout from the example video. This process worked much more smoothly than i anticipated and was very straightforward compared to what i thought it would be like. The whole kv file worked better than expected and because the necessary functionality was completed quickly, i was able to look up the kivy documentation for text input fields and add quality of life settings such as tabbing, opacity on out of focus text fields and entering to trigger the same effect as clicking "Add Song". Overall the kv file development process worked significantly better compared to the other files that i developed, this was majorly due to the provided examples.
 
 ## 5. What about your process could be improved the next time you do a project like this?
-...
+My mentality of how the project can be completed should be changed/improved, for this project, i worked off of just getting it to work first, then improving later. This mentality is very amateurish and instead, i should have focused on getting the code to work in the most correct way possible the first time around. This led to an issue of constantly having to change code that should have been done correctly in the first place. It is evident in my Songlist class and throughout the many commits that the methods changed fairly frequently. This led to time being un-necessarily spent making the testing files work again after every change of how a method works. If i had of spent a little extra time at the start of the project figuring out exactly how i need each method to work (especially get_song_by_title!!!) i would have saved myself time and headaches trying to get the methods to work how they need to.
 
 ## 6. Describe what resources you used and how you used them.
-...
+Desktop/Laptop: I used a combination of a desktop and a laptop to work from home and from places other than home, this allowed me to work on my assignment in my spare time i had when i wasn't at home
+LearnJCU: I used LearnJCU to get the task, review requirements (rubric) and the tips provided in the task sheet as well as get the example video to work from
+GitHub: I used Github to host the repository for my code, it let me show progressive development and easily work across multiple devices (desktop/laptop)
+PyCharm: I used PyCharm as my IDE, it helped me to write my code faster and make sure there were no PEP 8 errors
+WakaTime: WakaTime tracked the time i spent in my IDE (PyCharm) on my desktop, this was very useful to see how long i was spending on my project each day and in answering question #1
 
 ## 7. Describe the main challenges or obstacles you faced and how you overcame them.
-... 
+There were two main challenges that stumped me for a while that i had to overcome.
+1) When creating the dynamic widgets it kept giving me an error no matter what i did, i had followed the demo and implemented the code as correctly as possible in my own dynamic widgets method. After thinking about the problem for a while i found that i was not actually even getting the songs list and that i needed an extra ".songs" to get the songs list that i wanted. I still am not 100% certain that this is the correct way for the dynamic widgets to be created in this project, but it was the solution that came to mind after thinking about the problem and seems like it would be the correct way. The line of code that i ended up with to fix the problem was: "for song in self.songs.songs:"
+
+2) This obstacle was in the Songlist method get_song_by_title. This method proved to be one of the easiest to get to work and one of the hardest to get to work correctly. Up until one of the very final commits the method was using "in" instead of "==" for the title if statement. I did not realise this would be an issue until i was doing some testing and found that i would get an unexpected result if i simply looked for a tile "in" an entire string, as the artists name could be the same as a different songs title, this meant i needed a solution that would match exactly to the song.title. The hard part of this is splitting the string correctly as a song title could have spaces in it. In the end a variable was assigned to split the string and equal whatever was inside "" in the string, this happens to be the title of each song thanks to the str method in Song, a for loop then loops through all of the songs in the song list until it finds an exact match of the variable and song.title, then that song is returned.
