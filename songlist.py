@@ -22,10 +22,10 @@ class SongList:
         specifies how to print the song list
         :return: formatted songs list string
         """
-        songs_to_print = ""
+        songs_list = ""
         for song in self.songs:
-            songs_to_print += "{} \n".format(song)
-        return songs_to_print
+            songs_list += "{} \n".format(song)
+        return songs_list
 
     def get_song_by_title(self, song_to_try):
         """
@@ -33,7 +33,9 @@ class SongList:
         :param song_to_try: song to find title in
         :return: song
         """
+        # Gets song title to compare from parameter
         title = song_to_try.split("\"")[1]
+        # Loops through song list to find song with matching title
         for song in self.songs:
             if song.title == title:
                 return song
@@ -83,7 +85,7 @@ class SongList:
             for song in self.songs:
                 write_to_file.writerow([song.title, song.artist, song.year, "y" if song.required else "n"])
 
-    def sort(self, attribute):
+    def sort_songs(self, attribute):
         """
         sorts the song list by the specified attribute (title, artist, year, is_required) and then by the title
         :param attribute: attribute to sort the songs by

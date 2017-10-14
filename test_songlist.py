@@ -19,7 +19,7 @@ assert len(song_list.songs) > 0  # assuming CSV file is not empty
 # test sorting songs
 print("----Testing sort----")
 print("Unsorted SongList is:\n{}".format(song_list))
-song_list.sort("required")
+song_list.sort_songs("required")
 print("Sorted SongList by learned or not then title is:\n{}".format(song_list))
 
 # test adding a new Song
