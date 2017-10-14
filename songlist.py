@@ -33,8 +33,9 @@ class SongList:
         :param song_to_try: song to find title in
         :return: song
         """
+        title = song_to_try.split("\"")[1]
         for song in self.songs:
-            if song.title in song_to_try:
+            if song.title == title:
                 return song
 
     def add_song(self, song):

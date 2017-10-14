@@ -28,14 +28,10 @@ print("Adding {} to SongList".format(song))
 song_list.add_song(song)
 print("Updated SongList is: \n\n{}".format(song_list))
 
-# test get_song()
+# test get_song_by_title()
 print("----Testing get_song_by_title----")
-print("With input 'My Sharona':")
-print("Expected: {} | Got: {}".format('"My Sharona" by The Knack (1979) (learned)',
-                                      song_list.get_song_by_title("My Sharona")))
-print("\nWith input 'Macarena':")
-print("Expected: {} | Got: {}".format('"Macarena" by Los Del Rio (1996) (learned)',
-                                      song_list.get_song_by_title("Macarena")))
+print("With input: {}".format(str(song)))
+print("Expected: {} | Got: {}".format('"Amazing Grace" by John Newton (1779)', song_list.get_song_by_title(str(song))))
 print()
 # test getting the number of required and learned songs (separately)
 print("----Testing get_number_of_learned_songs & get_number_of_required_songs----")
