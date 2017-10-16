@@ -67,7 +67,6 @@ class SongsToLearnApp(App):
         :return: None
         """
         self.songs.sort_songs(current_sort_option)
-        self.root.ids.songsBox.clear_widgets()
         SongsToLearnApp.create_widgets(self)
 
     def clear_inputs(self):
@@ -104,14 +103,15 @@ class SongsToLearnApp(App):
         """
         self.song = self.songs.get_song_by_title(instance.text)
         # Marks song as learned and shows according status text
-        if self.song.required is True:
+        if self.song.required:
             self.song.mark_learned()
-            status_text = "You have learned {}".format(str(self.song.title))
+            status_text = "You have learned {}".format(self.song.title)
         # Marks song as required and shows according status text
         else:
             self.song.mark_required()
-            status_text = "You need to learn {}".format(str(self.song.title))
-        self.root.ids.status_text.text = str(status_text)
+            status_text = "You need to learn {}".format(self.song.title)
+        # Shows status text, sorts songs by current s
+        self.root.ids.status_text.text = status_text
         self.sort_songs(self.root.ids.sort_options.text)
 
     def add_song(self):
@@ -133,6 +133,7 @@ class SongsToLearnApp(App):
         except ValueError:
             self.root.ids.status_text.text = "Please enter a valid number"
             return
+        # Song add, clear inputs, sort songlist
         song_to_add = Song(self.root.ids.input_title.text, self.root.ids.input_artist.text,
                            int(self.root.ids.input_year.text))
         self.songs.add_song(song_to_add)
@@ -145,5 +146,6 @@ class SongsToLearnApp(App):
         :return: None
         """
         self.songs.save_songs(FILE_NAME)
+
 
 SongsToLearnApp().run()
